@@ -10,7 +10,7 @@ const User = require('../models/UserModel');
 const userController = {};
 
 userController.getUser = (req, res, next) => {
-  User.find({ username: req.params.name }).then(result => {
+  User.find({ username: req.body.username }).then(result => {
     res.locals.user = result;
     next();
   });

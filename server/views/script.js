@@ -8,11 +8,7 @@ const items = document.getElementById('items');
 const inputButton = document.getElementById('inputButton');
 
 const getItems = () => {
-  fetch('http://localhost:3000/getTodos', {
-    method: 'GET', // or 'PUT'
-    // mode: 'cors', // data can be `string` or {object}!
-    headers: { 'Content-Type': 'application/json' }
-  })
+  fetch('http://localhost:3000/getTodos')
     .then(result => result.json())
     .then((data) => {
       console.log('databack', data);
@@ -63,7 +59,7 @@ const addItem = () => {
 const deleteItem = e => {
   console.log(e.target.parentNode);
   fetch('http://localhost:3000/remove', {
-    method: 'PUT', // or 'PUT'
+    method: 'DELETE', // or 'PUT'
     body: JSON.stringify({ _id: e.target.id }), // data can be `string` or {object}!
     headers: { 'Content-Type': 'application/json' }
   })

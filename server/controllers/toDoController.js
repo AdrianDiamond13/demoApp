@@ -7,11 +7,14 @@ toDo.submit = async (req, res, next) => {
   next();
 };
 
-toDo.getTodos = async (req, res, next) => {
-  const todos = await Task.find({})
+toDo.getTodos = (req, res, next) => {
+  Task.find({})
+  .then(todos => {
     console.log("this is what's coming back from db", todos)
     res.locals.todos = todos;
     next();
+  })
+  .catch(err => console.log(err))
 };
 
 toDo.removeTodo = async (req, res, next) => {
