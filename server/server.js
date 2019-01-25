@@ -30,7 +30,22 @@ mongoose.connection.once('open', () => {
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-// app.get('/', toDoController.example, (req, res) => res.status(200).send(res.locals.data));
+//Get request route
+app.get('/getTodos', toDoController.getTodos, (req,res)=>{
+  // console.log(res.locals.todos);
+  res.status(200).json(res.locals.todos)
+})
+
+//Post request route
+app.post('/submit', toDoController.submit, (req, res) => {
+  res.status(200).json(res.locals.newTodo)
+});
+
+//Post request route
+app.put('/remove', toDoController.removeTodo, (req, res) => {
+  res.status(200).json(res.locals.removed)
+});
+
 
 // next 6 lines are for database user actions
 const userRouter = express.Router();
