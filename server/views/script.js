@@ -1,9 +1,3 @@
-// const data = {
-//   lecture: false,
-//   study: false,
-//   test: false
-// };
-
 const items = document.getElementById('items');
 const inputButton = document.getElementById('inputButton');
 
